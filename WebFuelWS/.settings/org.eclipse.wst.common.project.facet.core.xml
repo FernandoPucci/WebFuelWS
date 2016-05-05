@@ -15,4 +15,5 @@
   <installed facet="wls.web" version="12.2.1"/>
   <installed facet="oracle.weblogic.webservices" version="2.1"/>
   <installed facet="wst.jsdt.web" version="1.0"/>
+  <installed facet="jpt.jpa" version="2.1"/>
 </faceted-project>

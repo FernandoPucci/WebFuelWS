@@ -6,4 +6,6 @@
     <library path="modules/com.bea.core.weblogic.web.api.jar"/>
     <library path="server/lib/wseeclient.jar"/>
     <library path="server/lib/weblogic.jar"/>
+    <library path="%ORACLE_COMMON_MODULES_DIR%/javax.persistence.jar"/>
+    <library path="%ORACLE_COMMON_MODULES_DIR%/oracle.toplink/eclipselink.jar"/>
 </system-libraries>
