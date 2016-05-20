@@ -13,7 +13,7 @@ public class TestModel {
 
 	public TestModel() {
 
-		this.dataAtual = new Date(System.currentTimeMillis());
+		this.dataAtual = new Date();
 	}
 
 	public Date getDataAtual() {

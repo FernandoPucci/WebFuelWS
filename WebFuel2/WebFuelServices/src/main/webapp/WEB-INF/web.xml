@@ -13,10 +13,22 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+<!-- Registrando Listener e applicationContext.xml do Spring -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<!-- Jersey REST -->
 	<servlet>
 		<servlet-name>Jersey Web Application</servlet-name>
-		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+		<!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
 			<param-value>br.com.webfuel2.ws</param-value>
