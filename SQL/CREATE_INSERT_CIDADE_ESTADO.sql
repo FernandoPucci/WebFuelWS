@@ -9746,7 +9746,7 @@ CREATE TABLE ESTADO (
 -- 
 -- Extraindo dados da tabela ESTADO
 -- 
-/*
+
 INSERT INTO ESTADO VALUES (01, 'AC', 'Acre');
 INSERT INTO ESTADO VALUES (02, 'AL', 'Alagoas');
 INSERT INTO ESTADO VALUES (03, 'AM', 'Amazonas');
@@ -9774,5 +9774,5 @@ INSERT INTO ESTADO VALUES (24, 'SC', 'Santa Catarina');
 INSERT INTO ESTADO VALUES (25, 'SE', 'Sergipe');
 INSERT INTO ESTADO VALUES (26, 'SP', 'São Paulo');
 INSERT INTO ESTADO VALUES (27, 'TO', 'Tocantins');
-*/
+
 

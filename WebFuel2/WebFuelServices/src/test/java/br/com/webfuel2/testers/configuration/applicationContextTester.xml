@@ -17,6 +17,9 @@
 	<bean id="transacaoBo" class="br.com.webfuel2.business.impl.TransacaoBoImpl" />
 	<bean id="baseDao" class="br.com.webfuel2.dao.impl.BaseDAOImpl" />
 	<bean id="testDao" class="br.com.webfuel2.dao.impl.TesteDAOImpl" />
+	<bean id="estadoDao" class="br.com.webfuel2.dao.impl.EstadoDAOImpl" />
+	<bean id="cidadeDao" class="br.com.webfuel2.dao.impl.CidadeDAOImpl" />
+
 
 	<!-- CONFIGURAÇÕES DO DATASOURCE DO APACHE TOMCAT -->
 

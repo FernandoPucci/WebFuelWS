@@ -26,7 +26,7 @@ import br.com.webfuel2.dao.BaseDAO;
 public class BaseDAOImpl<T, I extends Serializable> implements BaseDAO<T, I> {
 
 	@PersistenceContext
-	private EntityManager manager;
+	protected EntityManager manager;
 
 	@Override
 	@Transactional
