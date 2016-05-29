@@ -3,8 +3,6 @@ package br.com.webfuel2.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  * Interface de DAO Generico com operações de CRUD básicas
  * 
