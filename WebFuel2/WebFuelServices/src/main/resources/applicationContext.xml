@@ -1,14 +1,48 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context.xsd">
- 
+	http://www.springframework.org/schema/context/spring-context.xsd 
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
 	<context:component-scan base-package="br.com.webfuel2" />
-	
-        <bean id="transacaoBo" class="br.com.webfuel2.business.impl.TransacaoBoImpl" />
-      
- 
+
+
+
+	<bean id="transacaoBo" class="br.com.webfuel2.business.impl.TransacaoBoImpl" />
+
+	<bean id="baseDao" class="br.com.webfuel2.dao.impl.BaseDAOImpl" />
+	<bean id="testDao" class="br.com.webfuel2.dao.impl.TesteDAOImpl" />
+
+
+
+	<bean id="dbDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/Webfuel2DB" />
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dbDataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="persistenceUnitName" value="PersistenciaPU" />
+		<property name="persistenceXmlLocation" value="classpath:persistence.xml" />
+		<!-- <property name="jpaProperties"> <props> <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop> 
+			<prop key="hibernate.show_sql">true</prop> <prop key="hibernate.format_sql">true</prop> 
+			<prop key="hibernate.hbm2ddl.auto">validate</prop> </props> </property> -->
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
 </beans>

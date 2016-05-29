@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import br.com.webfuel2.business.TransacaoBo;
+import br.com.webfuel2.dao.TesteDAO;
 import br.com.webfuel2.entities.model.TestModel;
 
 @Path("/")
@@ -19,6 +20,8 @@ public class TestServices {
 	@Autowired
 	TransacaoBo transacaoBo;
 	
+	@Autowired
+	TesteDAO testeDAO;
 	
 	@GET
 	@Path("/testar")
@@ -31,16 +34,30 @@ public class TestServices {
 	}
 
 	@GET
-	@Path("/testarSpring")
+	@Path("/testarDB")
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response testarSpringService() {
+		
+		TestModel tm = new TestModel();
+		
+		tm.setNome("Fernando");
+		tm.setSobrenome("Pucci");
+		testeDAO.save(tm);
+
+		// retorna HTTP response 200 Sucesso
+		return Response.status(200).entity("Sucesso").build();
+	}
+
+	@GET
+	@Path("/testarSpring")
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response testarDBService() {
 		
 		String result = transacaoBo.save();
 
 		// retorna HTTP response 200 Sucesso
 		return Response.status(200).entity(result).build();
 	}
-
 	
 	@GET
 	@Path("/testarObjetos")
