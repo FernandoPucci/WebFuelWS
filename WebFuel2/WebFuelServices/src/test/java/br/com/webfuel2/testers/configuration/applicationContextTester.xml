@@ -19,6 +19,8 @@
 	<bean id="testDao" class="br.com.webfuel2.dao.impl.TesteDAOImpl" />
 	<bean id="estadoDao" class="br.com.webfuel2.dao.impl.EstadoDAOImpl" />
 	<bean id="cidadeDao" class="br.com.webfuel2.dao.impl.CidadeDAOImpl" />
+	
+		<bean id="cidadeEstadoDto" class="br.com.webfuel2.entities.model.dto.CidadeEstadoDTO" />
 
 
 	<!-- CONFIGURAÇÕES DO DATASOURCE DO APACHE TOMCAT -->

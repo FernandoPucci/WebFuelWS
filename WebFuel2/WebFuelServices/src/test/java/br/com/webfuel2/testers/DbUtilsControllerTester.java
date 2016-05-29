@@ -137,6 +137,20 @@ public class DbUtilsControllerTester {
 		System.out.println("Lista Retornou: [" + listaSaida.size() + "] resultados.");
 
 	}
+	
+	@Test
+	public void getAllCidadeEstadoDescricaoByIdEstadoControllerTester() {
+
+		List<CidadeEstadoDTO> listaSaida = null;
+
+		listaSaida = dbUtilsController.getAllCidadeEstadoDescricaoByIdEstadoController(11);
+
+		assertNotNull(listaSaida);
+		assertTrue(listaSaida.size() > 0);
+
+		System.out.println("Lista Retornou: [" + listaSaida.size() + "] resultados.");
+
+	}
 
 	
 }

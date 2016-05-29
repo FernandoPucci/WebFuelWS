@@ -1,11 +1,11 @@
 package br.com.webfuel2.entities.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -13,7 +13,6 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 
 @XmlRootElement
 @Entity
-@Embeddable
 @Table(name = "CIDADE")
 @JsonAutoDetect
 public class Cidade {
@@ -24,6 +23,7 @@ public class Cidade {
 	private Integer idCidade;
 
 	@Column(name = "ID_ESTADO")
+	@JoinTable(name="ESTADO")
 	private Integer idEstado;
 
 	@Column(name = "UF")

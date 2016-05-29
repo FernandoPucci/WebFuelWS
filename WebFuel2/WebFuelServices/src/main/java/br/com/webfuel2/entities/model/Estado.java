@@ -1,7 +1,6 @@
 package br.com.webfuel2.entities.model;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +12,6 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 
 @XmlRootElement
 @Entity
-@Embeddable
 @Table(name = "ESTADO")
 @JsonAutoDetect
 public class Estado {
@@ -28,7 +26,7 @@ public class Estado {
 
 	@Column(name = "NOME")
 	private String descricao;
-
+	
 	public Integer getIdEstado() {
 		return idEstado;
 	}

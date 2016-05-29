@@ -1,6 +1,5 @@
 package br.com.webfuel2.entities.model.dto;
 
-import javax.persistence.Embedded;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonAutoDetect;
@@ -12,10 +11,8 @@ import br.com.webfuel2.entities.model.Estado;
 @JsonAutoDetect
 public class CidadeEstadoDTO {
 
-	@Embedded
 	private Cidade cidade;
 
-	@Embedded
 	private Estado estado;
 
 	public Cidade getCidade() {

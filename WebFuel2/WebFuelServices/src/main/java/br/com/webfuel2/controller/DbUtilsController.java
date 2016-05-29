@@ -9,6 +9,7 @@ import br.com.webfuel2.dao.CidadeDAO;
 import br.com.webfuel2.dao.EstadoDAO;
 import br.com.webfuel2.entities.model.Cidade;
 import br.com.webfuel2.entities.model.Estado;
+import br.com.webfuel2.entities.model.dto.CidadeEstadoDTO;
 
 @Controller
 public class DbUtilsController {
@@ -69,5 +70,11 @@ public class DbUtilsController {
 
 		return cidadeDAO.getAllCidadeByIdEstado(idEstado);
 
+	}
+	
+	public List<CidadeEstadoDTO> getAllCidadeEstadoDescricaoByIdEstadoController(Integer idEstado){
+		
+		return cidadeDAO.getAllCidadeEstadoDescricaoByIdEstado(idEstado);
+		
 	}
 }

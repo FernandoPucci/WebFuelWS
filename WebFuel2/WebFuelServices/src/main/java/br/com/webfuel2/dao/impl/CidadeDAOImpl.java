@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.webfuel2.dao.CidadeDAO;
 import br.com.webfuel2.entities.model.Cidade;
+import br.com.webfuel2.entities.model.dto.CidadeEstadoDTO;
 
 public class CidadeDAOImpl extends BaseDAOImpl<Cidade, Integer> implements CidadeDAO {
 
@@ -23,22 +24,35 @@ public class CidadeDAOImpl extends BaseDAOImpl<Cidade, Integer> implements Cidad
 
 	@Override
 	public List<Cidade> getAllCidadeByIdEstado(Integer idEstado) {
-	
-		
-		  List<Cidade> listaSaida = null;
 
-	        TypedQuery<Cidade> query = manager.createQuery("SELECT C "
-	                + " FROM Cidade C "
-	                + " where  C.idEstado  = :idEstadoQuery", Cidade.class);
-	        
-	        query.setParameter("idEstadoQuery",idEstado);
-	        
-	        listaSaida = query.getResultList();
+		List<Cidade> listaSaida = null;
 
-	        return listaSaida;
-		
-		
+		TypedQuery<Cidade> query = manager
+				.createQuery("SELECT C " + " FROM Cidade C " + " where  C.idEstado  = :idEstadoQuery", Cidade.class);
+
+		query.setParameter("idEstadoQuery", idEstado);
+
+		listaSaida = query.getResultList();
+
+		return listaSaida;
+
 	}
 
-	
+	@Override
+	public List<CidadeEstadoDTO> getAllCidadeEstadoDescricaoByIdEstado(Integer idEstado) {
+
+		List<CidadeEstadoDTO> listaSaida = null;
+
+		TypedQuery<CidadeEstadoDTO> query = manager.createQuery(
+				"SELECT C, E" + " FROM Cidade C, Estado E " + " where  C.idEstado  = :idEstadoQuery",
+				CidadeEstadoDTO.class);
+
+		query.setParameter("idEstadoQuery", idEstado);
+
+		listaSaida = query.getResultList();
+
+		return listaSaida;
+
+	}
+
 }
