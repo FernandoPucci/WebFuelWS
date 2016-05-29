@@ -12,11 +12,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.webfuel2.dao.BaseDAO;
 
+/**
+ * 
+ * 
+ * Implementção de DAO genérico, deixando parte transacional por conta do Spring
+ * 
+ * @author fernando-pucci
+ *
+ * @param <T>
+ * @param <I>
+ */
 @Repository
 public class BaseDAOImpl<T, I extends Serializable> implements BaseDAO<T, I> {
-	
-	 @PersistenceContext
-	 private EntityManager manager;
+
+	@PersistenceContext
+	private EntityManager manager;
 
 	@Override
 	@Transactional
@@ -24,18 +34,16 @@ public class BaseDAOImpl<T, I extends Serializable> implements BaseDAO<T, I> {
 
 		T saved = null;
 
-		//manager.getTransaction().begin();
 		saved = manager.merge(entity);
-		//manager.getTransaction().commit();
 
 		return saved;
 	}
 
 	@Override
+	@Transactional
 	public void remove(T entity) {
-		manager.getTransaction().begin();
+
 		manager.remove(entity);
-		//manager.getTransaction().commit();
 
 	}
 
@@ -56,6 +64,5 @@ public class BaseDAOImpl<T, I extends Serializable> implements BaseDAO<T, I> {
 
 		return manager.createQuery("select o from " + classe.getSimpleName() + " o").getResultList();
 	}
-
 
 }

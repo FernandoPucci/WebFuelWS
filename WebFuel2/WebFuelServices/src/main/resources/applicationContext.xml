@@ -1,6 +1,5 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -13,35 +12,41 @@
 	<context:component-scan base-package="br.com.webfuel2" />
 
 
-
+	<!-- CLASSES DE IMPLENTACOES NECESSÁRIAS PARA 'AutoWired' -->
 	<bean id="transacaoBo" class="br.com.webfuel2.business.impl.TransacaoBoImpl" />
-
 	<bean id="baseDao" class="br.com.webfuel2.dao.impl.BaseDAOImpl" />
 	<bean id="testDao" class="br.com.webfuel2.dao.impl.TesteDAOImpl" />
 
 
-
+	<!-- CONFIGURAÇÕES DO DATASOURCE DO APACHE TOMCAT (Configurados no Servidor)-->
 	<bean id="dbDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/Webfuel2DB" />
 	</bean>
 
+	<!-- CONFIGURAÇÕES DO FACTORY DO ENTITYMANAGER, APONTANDO PARA O DATASOURCE -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dbDataSource" />
+
+		<!-- APONTA PARA O SPRING QUE O CONTROLE DE PERSISTENCIA DEVE SER FEITO 
+			PELO HIBERNATE -->
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
+
+		<!-- NOME DO ARQUIVO DE CONFIGURAÇÕES DE HIBERNATE/JPA, PERSISTENCIA persistence.xml -->
 		<property name="persistenceUnitName" value="PersistenciaPU" />
+
+		<!-- CAMINHO PARA O persistence.xml -->
 		<property name="persistenceXmlLocation" value="classpath:persistence.xml" />
-		<!-- <property name="jpaProperties"> <props> <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop> 
-			<prop key="hibernate.show_sql">true</prop> <prop key="hibernate.format_sql">true</prop> 
-			<prop key="hibernate.hbm2ddl.auto">validate</prop> </props> </property> -->
 	</bean>
 
+	<!-- CONFIGURAÇÕES DO TRANSACTION MANAGER JPA -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
+	<!-- PERMITE ANOTACOES PARA O TRANSACTION MANAGER -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 

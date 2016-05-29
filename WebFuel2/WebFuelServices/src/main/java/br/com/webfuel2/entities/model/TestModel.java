@@ -12,9 +12,22 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import br.com.webfuel2.util.json.DateSerializer;
+
+/**
+ * Entidade de Testes 'TestModel' representativa da tabela TESTE
+ * 
+ * @author fernando-pucci
+ *
+ */
 @XmlRootElement
 @Entity
 @Table(name = "TESTE")
+@JsonAutoDetect
 public class TestModel {
 
 	@Id
@@ -49,6 +62,13 @@ public class TestModel {
 		this.dataAtual = dataAtual;
 	}
 
+	/**
+	 * Ajusta Serialização para saida formatada da data
+	 * 
+	 * @return
+	 */
+	@JsonSerialize(using = DateSerializer.class)
+	@JsonProperty("dataRegistro")
 	public Date getDataAtual() {
 		return dataAtual;
 	}
