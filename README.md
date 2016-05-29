@@ -1,11 +1,20 @@
 # WebFuelWS
 
-Werbservices to Webfuel
+Werbservices to Webfuel2
 
 
 Descriptions: 
 
-(eclipse workspace)
-(Weblogic 12.2.1)
+(Eclipse Mars workspace)
+(Apache Tomcat 8.0)
+(MySQL Database)
 (JPA 2.1)
-(Hibernate 4.3.1 - libraries included '/lib' folder)
+(Spring 4)
+(Maven)
+(Jersey Rest Webservices)
+(Hibernate 4.3.1)
+
+Including:
+SoapUI Test Project;
+SQL Queries to DDL Instructions.
+
