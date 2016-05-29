@@ -9,7 +9,7 @@ public class TransacaoBoImpl implements TransacaoBo{
 
 	public String save() {
 
-		return "Serviço Spring funcionando Corretamente.";
+		return "Servico Spring funcionando Corretamente.";
 
 	}
 }

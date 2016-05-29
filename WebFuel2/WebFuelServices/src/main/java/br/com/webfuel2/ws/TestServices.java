@@ -40,8 +40,9 @@ public class TestServices {
 		
 		TestModel tm = new TestModel();
 		
+		tm.setIdTeste(1);
 		tm.setNome("Fernando");
-		tm.setSobrenome("Pucci");
+		tm.setSobrenome("Silva Pucci");
 		testeDAO.save(tm);
 
 		// retorna HTTP response 200 Sucesso

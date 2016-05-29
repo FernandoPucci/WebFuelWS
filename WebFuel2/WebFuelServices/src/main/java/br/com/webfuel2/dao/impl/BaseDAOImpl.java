@@ -13,18 +13,18 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.webfuel2.dao.BaseDAO;
 
 @Repository
-@Transactional
 public class BaseDAOImpl<T, I extends Serializable> implements BaseDAO<T, I> {
 	
 	 @PersistenceContext
 	 private EntityManager manager;
 
 	@Override
+	@Transactional
 	public T save(T entity) {
 
 		T saved = null;
 
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 		saved = manager.merge(entity);
 		//manager.getTransaction().commit();
 
