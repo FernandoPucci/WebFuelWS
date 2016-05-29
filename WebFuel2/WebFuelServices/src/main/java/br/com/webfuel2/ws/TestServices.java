@@ -12,10 +12,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import br.com.webfuel2.business.TransacaoBo;
-import br.com.webfuel2.dao.TesteDAO;
+import br.com.webfuel2.controller.TestServicesController;
 import br.com.webfuel2.entities.model.TestModel;
 
 /**
@@ -26,7 +26,7 @@ import br.com.webfuel2.entities.model.TestModel;
  *
  */
 @Path("/")
-@Controller
+@Service
 public class TestServices {
 
 	/**
@@ -36,10 +36,10 @@ public class TestServices {
 	TransacaoBo transacaoBo;
 
 	/**
-	 * IoC diretamente para camada DAO
+	 * IoC diretamente para camada Controller
 	 */
 	@Autowired
-	TesteDAO testeDAO;
+	TestServicesController testServicesController;
 
 	/**
 	 * Verifica se os serviços REST estão corretamente funcionais
@@ -72,7 +72,7 @@ public class TestServices {
 		tm.setIdTeste(1);
 		tm.setNome("Fernando");
 		tm.setSobrenome("Silva Pucci");
-		testeDAO.save(tm);
+		testServicesController.testarSpringServiceController(tm);
 
 		// retorna HTTP response 200 Sucesso
 		return Response.status(200).entity("Sucesso").build();
@@ -91,7 +91,7 @@ public class TestServices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response testarSpringServiceSave(TestModel tm) {
 
-		testeDAO.save(tm);
+		testServicesController.testarSpringServiceSaveController(tm);
 
 		// retorna HTTP response 200 Sucesso
 		return Response.status(200).entity("Sucesso [" + tm.getNome() + " " + tm.getSobrenome() + "] cadastrado!")
@@ -108,8 +108,7 @@ public class TestServices {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<TestModel> testarSpringServiceList() {
 
-		return testeDAO.getAll(TestModel.class);
-
+		return testServicesController.testarSpringServiceListController();
 	}
 
 	/**
@@ -123,7 +122,7 @@ public class TestServices {
 	@Produces(MediaType.APPLICATION_JSON)
 	public TestModel testarSpringServiceFindById(@QueryParam("id") Integer id) {
 
-		return testeDAO.getById(TestModel.class, id);
+		return testServicesController.testarSpringServiceFindByIdController(id);
 
 	}
 

@@ -18,10 +18,15 @@
 	<bean id="baseDao" class="br.com.webfuel2.dao.impl.BaseDAOImpl" />
 	<bean id="testDao" class="br.com.webfuel2.dao.impl.TesteDAOImpl" />
 
+	<!-- CONFIGURAÇÕES DO DATASOURCE DO APACHE TOMCAT -->
 
-	<!-- CONFIGURAÇÕES DO DATASOURCE DO APACHE TOMCAT (Configurados no Servidor)-->
-	<bean id="dbDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/Webfuel2DB" />
+	<bean id="dbDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/WEBFUEL2" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
 	</bean>
 
 	<!-- CONFIGURAÇÕES DO FACTORY DO ENTITYMANAGER, APONTANDO PARA O DATASOURCE -->
@@ -34,12 +39,22 @@
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
+		<property name="packagesToScan" value="br.com.webfuel2.entities.model" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+			</props>
+		</property>
 
 		<!-- NOME DO ARQUIVO DE CONFIGURAÇÕES DE HIBERNATE/JPA, PERSISTENCIA persistence.xml -->
-		<property name="persistenceUnitName" value="PersistenciaPU" />
+		<!-- <property name="persistenceUnitName" value="PersistenciaPU" /> -->
 
 		<!-- CAMINHO PARA O persistence.xml -->
-		<property name="persistenceXmlLocation" value="classpath:persistence.xml" />
+		<!-- <property name="persistenceXmlLocation" value="./persistenceTester.xml" 
+			/> -->
 	</bean>
 
 	<!-- CONFIGURAÇÕES DO TRANSACTION MANAGER JPA -->
