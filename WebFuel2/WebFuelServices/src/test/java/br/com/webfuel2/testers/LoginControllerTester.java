@@ -75,4 +75,17 @@ public class LoginControllerTester {
 
 	}
 
+	@Test
+	public void findUsuarioByIdFacebookControllerTester() {
+
+		Usuario usuario = null;
+
+		usuario = loginController.findUsuarioByIdFacebookController(10153445436356366L);
+
+		assertNotNull(usuario);
+		assertNotNull(usuario.getCidade());
+
+		System.out.println(usuario.toString());
+	}
+
 }

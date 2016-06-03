@@ -40,6 +40,16 @@ public class LoginController {
 
 	}
 	
+	public Usuario findUsuarioByIdFacebookController(Long idFacebook){
+				
+		Usuario usuario = null;
+		
+		usuario = usuarioDAO.findUsuarioByIdFacebookDAO(idFacebook);
+		
+		return usuario; 
+		
+		
+	}
 	
 
 	
