@@ -17,13 +17,22 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 @JsonAutoDetect
 public class Cidade {
 
+	public Cidade() {
+
+	}
+
+	public Cidade(Integer idCidade) {
+
+		this.idCidade = idCidade;
+	}
+
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCidade;
 
 	@Column(name = "ID_ESTADO")
-	@JoinTable(name="ESTADO")
+	@JoinTable(name = "ESTADO")
 	private Integer idEstado;
 
 	@Column(name = "UF")
