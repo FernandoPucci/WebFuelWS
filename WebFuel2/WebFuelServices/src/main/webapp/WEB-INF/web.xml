@@ -33,6 +33,16 @@
 			<param-name>com.sun.jersey.config.property.packages</param-name>
 			<param-value>br.com.webfuel2.ws</param-value>
 		</init-param>
+		
+		 <init-param>
+        <param-name>
+            com.sun.jersey.spi.container.ContainerResponseFilters
+        </param-name>
+        <param-value>
+            br.com.webfuel2.util.filters.CORSFilter
+        </param-value>
+    </init-param>
+		
 		<init-param>
 			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
 			<param-value>true</param-value>
